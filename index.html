@@ -3,13 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Service and Product Catalogue</title>
+    <title>Jetset Jive Adventure</title>
     <style>
         body {
             font-family: Arial, sans-serif;
             margin: 0;
             padding: 0;
             line-height: 1.6;
+            background-color: #f4f4f4;
         }
         header {
             background: #333;
@@ -18,33 +19,35 @@
             text-align: center;
         }
         nav {
-            text-align: center;
-            margin: 10px 0;
+            background: #444;
+            overflow: hidden;
         }
         nav a {
-            margin: 0 15px;
+            float: left;
+            display: block;
+            color: #fff;
+            text-align: center;
+            padding: 14px 20px;
             text-decoration: none;
-            color: #007BFF;
         }
         nav a:hover {
-            text-decoration: underline;
+            background-color: #555;
         }
         .container {
-            max-width: 800px;
+            max-width: 1200px;
             margin: auto;
             padding: 20px;
         }
-        .card {
+        .tab-content {
+            display: none;
+            background: #fff;
             border: 1px solid #ddd;
             border-radius: 5px;
-            padding: 15px;
-            margin-bottom: 20px;
+            padding: 20px;
+            margin-top: 20px;
         }
-        .card h3 {
-            margin: 0 0 10px;
-        }
-        .card p {
-            margin: 0;
+        .tab-content.active {
+            display: block;
         }
         footer {
             background: #333;
@@ -60,48 +63,59 @@
         footer a:hover {
             text-decoration: underline;
         }
+        .button {
+            background-color: #007BFF;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            cursor: pointer;
+            text-decoration: none;
+            border-radius: 5px;
+        }
+        .button:hover {
+            background-color: #0056b3;
+        }
     </style>
 </head>
 <body>
     <header>
-        <h1>Our Service and Product Catalogue</h1>
+        <h1>Welcome to Jetset Jive Adventure</h1>
     </header>
 
     <nav>
-        <a href="#services">Services</a>
-        <a href="#products">Products</a>
-        <a href="#contact">Contact</a>
-        <a href="#terms">Terms & Conditions</a>
+        <a href="#products" onclick="showTab('products')">Products</a>
+        <a href="#services" onclick="showTab('services')">Services</a>
+        <a href="#contact" onclick="showTab('contact')">Contact Us</a>
     </nav>
 
     <div class="container">
-        <section id="services">
-            <h2>Services</h2>
-            <div class="card">
-                <h3>Service Name 1</h3>
-                <p>Description of the service.</p>
-            </div>
-            <div class="card">
-                <h3>Service Name 2</h3>
-                <p>Description of the service.</p>
-            </div>
-        </section>
-
-        <section id="products">
+        <div id="products" class="tab-content">
             <h2>Products</h2>
             <div class="card">
-                <h3>Product Name 1</h3>
-                <p>Description of the product.</p>
+                <h3>Category 1</h3>
+                <p>Subcategory options and product details go here.</p>
             </div>
             <div class="card">
-                <h3>Product Name 2</h3>
-                <p>Description of the product.</p>
+                <h3>Category 2</h3>
+                <p>Subcategory options and product details go here.</p>
             </div>
-        </section>
+        </div>
 
-        <section id="contact">
+        <div id="services" class="tab-content">
+            <h2>Services</h2>
+            <div class="card">
+                <h3>Category 1</h3>
+                <p>Subcategory options and service details go here.</p>
+            </div>
+            <div class="card">
+                <h3>Category 2</h3>
+                <p>Subcategory options and service details go here.</p>
+            </div>
+        </div>
+
+        <div id="contact" class="tab-content">
             <h2>Contact Us</h2>
-            <p>If you have any questions about availability, feel free to reach out!</p>
+            <p>Feel free to reach out through the form below:</p>
             <form action="mailto:your-email@example.com" method="POST" enctype="text/plain">
                 <label for="name">Your Name:</label><br>
                 <input type="text" id="name" name="name" required><br><br>
@@ -112,19 +126,26 @@
                 <label for="message">Message:</label><br>
                 <textarea id="message" name="message" rows="5" required></textarea><br><br>
 
-                <button type="submit">Send Message</button>
+                <button type="submit" class="button">Send Message</button>
             </form>
-        </section>
-
-        <section id="terms">
-            <h2>Terms & Conditions</h2>
-            <p>All services and products are subject to availability. Prices and descriptions are subject to change without notice.</p>
-            <p>For detailed terms and conditions, please contact us directly.</p>
-        </section>
+        </div>
     </div>
 
     <footer>
-        <p>&copy; 2025 Your Company Name. All rights reserved. | <a href="#contact">Contact Us</a></p>
+        <p>&copy; 2025 Jetset Jive Adventure. All rights reserved. | <a href="#contact">Contact Us</a></p>
     </footer>
+
+    <script>
+        function showTab(tabId) {
+            const tabs = document.querySelectorAll('.tab-content');
+            tabs.forEach(tab => tab.classList.remove('active'));
+            document.getElementById(tabId).classList.add('active');
+        }
+
+        // Show the first tab by default
+        document.addEventListener('DOMContentLoaded', () => {
+            showTab('products');
+        });
+    </script>
 </body>
 </html>
