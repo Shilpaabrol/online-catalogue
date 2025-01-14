@@ -1,8 +1,8 @@
 backend:
   name: git-gateway
-  branch: main
+  branch: main # Replace 'main' with your default branch if different
 
-media_folder: "uploads" # Folder for uploaded media
+media_folder: "uploads" # Folder for uploaded media (relative to your repository root)
 public_folder: "/uploads" # Public URL for the media
 
 collections:
@@ -21,4 +21,3 @@ collections:
     fields:
       - {label: "Title", name: "title", widget: "string"}
       - {label: "Description", name: "description", widget: "text"}
-Add Netlify CMS configuration file
